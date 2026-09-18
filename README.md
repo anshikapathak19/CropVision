@@ -1,6 +1,6 @@
 # CropVision
 
-**CropVision** is a headless, classical Computer Vision toolkit built with Python 3.10+ and OpenCV. It analyzes crop leaf images, performs automated leaf segmentation, isolates visually abnormal regions (lesions, necrosis, chlorosis), computes spatial area metrics, and classifies overall visual severity into standardized heuristic tiers.
+**CropVision** is a headless, classical Computer Vision toolkit built with Python 3.10+ and OpenCV. It analyzes crop leaf images, performs automated leaf segmentation, isolates visually abnormal regions (lesions, necrosis, chlorosis), computes spatial area metrics, and classifies overall visual severity into project-defined heuristic tiers.
 
 > **Disclaimer**: This toolkit performs visual anomaly analysis based strictly on classical image color, intensity, and geometric properties. It does **not** provide agricultural, biological, or medical disease diagnosis.
 
@@ -143,10 +143,20 @@ python -m src.main --help
 
 When executed for an input image (e.g. `leaf_diseased.jpeg`), CropVision produces:
 
-### 1. Reports (`reports/<case>/`)
-- **`reports/leaf_diseased/analysis.json`**: Complete structured JSON containing image dimensions, leaf area, affected area, affected percentage, severity level, region count, threshold parameters used, disclaimer, and per-region details.
-- **`reports/leaf_diseased/region_data.csv`**: Tabular CSV file containing one row per detected region with columns: `region_id,area_px,centroid_x,centroid_y,bbox_x,bbox_y,bbox_w,bbox_h`.
-- **`reports/leaf_diseased/summary.txt`**: Human-readable text summary formatted with headers, severity breakdown, region coordinates, and disclaimer text.
+### 1. Reports
+
+```text
+reports/
+└── <case>/
+    └── <image_name>/
+        ├── analysis.json
+        ├── region_data.csv
+        └── summary.txt
+```
+
+- **`analysis.json`**: Complete structured JSON containing image dimensions, leaf area, affected area, affected percentage, severity level, region count, threshold parameters used, disclaimer, and per-region details.
+- **`region_data.csv`**: Tabular CSV file containing one row per detected region with columns: `region_id,area_px,centroid_x,centroid_y,bbox_x,bbox_y,bbox_w,bbox_h`.
+- **`summary.txt`**: Human-readable text summary formatted with headers, severity breakdown, region coordinates, and disclaimer text.
 
 ### 2. Output Annotated Image (`output/<case>_analyzed.png`)
 - Green leaf contour boundary.
@@ -169,12 +179,12 @@ When executed for an input image (e.g. `leaf_diseased.jpeg`), CropVision produce
 
 CropVision classifies visual severity based on the percentage of leaf area occupied by visually abnormal regions:
 
-| Severity Level | Affected Percentage Range ($P_{\text{affected}}$) |
+| Severity Level | Affected Percentage Range |
 |---|---|
-| **`LOW`** | $< 5.0\%$ |
-| **`MODERATE`** | $5.0\% \le P_{\text{affected}} < 15.0\%$ |
-| **`HIGH`** | $15.0\% \le P_{\text{affected}} < 30.0\%$ |
-| **`SEVERE`** | $P_{\text{affected}} \ge 30.0\%$ |
+| **`LOW`** | `< 5.0%` |
+| **`MODERATE`** | `5.0% – < 15.0%` |
+| **`HIGH`** | `15.0% – < 30.0%` |
+| **`SEVERE`** | `>= 30.0%` |
 
 > **Note**: Severity tiers are **project-defined visual heuristics** intended for image analysis stratification. They are **NOT official agricultural disease severity standards**.
 
