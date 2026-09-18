@@ -1,0 +1,33 @@
+{
+    "input_image": "leaf_diseased.jpeg",
+    "image_dimensions": {
+        "width": 256,
+        "height": 256
+    },
+    "leaf_area_pixels": 29108,
+    "affected_area_pixels": 152,
+    "affected_percentage": 0.52,
+    "severity_level": "LOW",
+    "num_abnormal_regions": 1,
+    "severity_thresholds_used": {
+        "LOW": "< 5.0%",
+        "MODERATE": "5.0% - 15.0%",
+        "HIGH": "15.0% - 30.0%",
+        "SEVERE": ">= 30.0%"
+    },
+    "disclaimer": "Notice: Visually abnormal region analysis. Not an agricultural or medical diagnosis.",
+    "regions": [
+        {
+            "region_id": 1,
+            "area_px": 124,
+            "centroid_x": 96,
+            "centroid_y": 120,
+            "bounding_box": {
+                "x": 87,
+                "y": 110,
+                "width": 19,
+                "height": 22
+            }
+        }
+    ]
+}

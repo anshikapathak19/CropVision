@@ -1,0 +1,23 @@
+================================================================================
+CROPVISION LEAF ANALYSIS SUMMARY REPORT
+================================================================================
+Input Image            : leaf_diseased.jpeg
+Image Dimensions       : 256 x 256 px
+Leaf Area              : 29,108 pixels
+Affected Area          : 152 pixels
+Affected Percentage    : 0.52%
+Severity Level         : LOW
+Abnormal Regions Count : 1 region(s)
+
+SEVERITY THRESHOLDS USED:
+  - LOW        : < 5.0%
+  - MODERATE   : 5.0% - 15.0%
+  - HIGH       : 15.0% - 30.0%
+  - SEVERE     : >= 30.0%
+
+DETECTED REGIONS BREAKDOWN:
+  - Region #1: Area = 124 px, Centroid = (96, 120), BBox = [x: 87, y: 110, w: 19, h: 22]
+
+DISCLAIMER:
+Notice: Visually abnormal region analysis. Not an agricultural or medical diagnosis.
+================================================================================
